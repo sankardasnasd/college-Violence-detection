@@ -1,0 +1,41 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/adminviewincident_post/#about">
+    {% csrf_token %}
+   <table class="pull-left">
+    <tr>
+      <td>
+      <input type="text" PLACEHOLDER="Search by incident" name="textfield" id="textfield" required class="form-control" /></td>
+      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>
+    </tr>
+  </table>
+<br>
+<br>
+   <table class="table table-bordered">
+    <tr>
+      <th>Sl/No</th>
+              <td>Date&nbsp;</td>
+
+      <th>Description</th>
+      <th>&nbsp;Incident</th>
+        <th></th>
+        <th></th>
+    </tr>
+      {% for i in data %}
+    <tr>
+        <td width="50px">{{ forloop.counter }}</td>
+                <td>{{ i.date }}</td>
+
+        <td>{{ i.description }}</td>
+        <td>{{ i.incident }}</td>
+      <td width="50px"><a href="/myapp/admineditincident/{{ i.id }}" class=" btn btn-success">Edit</a></td>
+      <td width="50px"><a href="/myapp/admindeleteincident/{{ i.id }}" class="btn btn-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+

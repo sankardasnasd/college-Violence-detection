@@ -1,0 +1,19 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/admineeditdepartment_post/#about">
+    {% csrf_token %}
+   <table class="table table-bordered">
+    <tr>
+        <td width="170px"><input type="hidden" name="id" value="{{ dt.id }}">Department Name</td>
+      <td>
+      <input type="text" name="textfield" id="textfield" required pattern="[a-z A-Z]+" class="form-control" value="{{ dt.department }}"/></td>
+    </tr>
+    <tr>
+        <td></td>
+
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/adminViewIncludedFace_post/#about">
+    {% csrf_token %}
+           <input type="hidden" name="id" value="{{ id }}"/>
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" required class="form-control" /></td>
+      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>
+    </tr>
+  </table>
+ <div class="container">
+        <div class="row">
+                  {% for i in data %}
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ i.STUDENT.image }}" class="card-img-top" height="300px" alt="Card Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.STUDENT.name }}</h5>
+                        <p class="card-text "><a href="/myapp/delface/{{ i.id }}" onclick="return confirm('Are you sure')" class="btn btn-danger">Delete</a> </p>
+                    </div>
+                </div>
+            </div>
+                  {% endfor %}
+
+        </div>
+    </div>
+{#   <table class="table table-bordered table-hover table-striped">#}
+{#    <tr>#}
+{#      <td>Sl/No</td>#}
+{#      <td>name</td>#}
+{#        <td>image&nbsp;</td>#}
+{#    </tr>#}
+{#      {% for i in data %}#}
+{#    <tr>#}
+{#        <td>{{ forloop.counter }}</td>#}
+{#        <td>{{ i.STUDENT.name }}</td>#}
+{#        <td><img src="{{ i.STUDENT.image }}" height="100px" width="100px"></td>#}
+{#    </tr>#}
+{#      {% endfor %}#}
+{#  </table>#}
+</form>
+</body>
+{% endblock %}
+

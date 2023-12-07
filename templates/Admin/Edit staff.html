@@ -1,0 +1,69 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form action="/myapp/admineditstaff_post/#about" method="post" enctype="multipart/form-data" name="form1" id="form1">
+{% csrf_token %}
+   <table class="table table-bordered table-hover table-striped">
+    <tr>
+        <input type="hidden" name="id" value="{{ dt.id }}"/>
+      <td>Name</td>
+      <td>
+      <input type="text" name="textfield" id="textfield" required class="form-control" value="{{ dt.name }}"/></td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td>
+      <input type="text" name="textfield2" id="textfield2"required pattern="[9876][0-9]{9}" max="10" class="form-control" value="{{ dt.phone_number }}" /></td>
+    </tr>
+    <tr>
+      <td>Department</td>
+      <td>
+        <label for="select"></label>
+        <select name="select" id="select" class="form-control">
+            {% for i in dt2 %}
+            <option value="{{ i.id }}">{{ i.department }}</option>
+            {% endfor  %}
+      </select></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td><p>
+        <label>
+          <input type="radio" name="RadioGroup1" value="Male" id="RadioGroup1_0" {% if dt.gender == 'Male' %}checked{% endif %}/>
+          Male</label>
+        <br />
+        <label>
+          <input type="radio" name="RadioGroup1" value="Female" id="RadioGroup1_1"  {% if dt.gender == 'Female' %}checked{% endif %}/>
+          Female</label>
+        <br />
+      </p></td>
+    </tr>
+    <tr>
+      <td>E-mail</td>
+      <td>
+      <input type="email" name="textfield3" id="textfield3" class="form-control" value="{{ dt.e_mail }}"/></td>
+    </tr>
+    <tr>
+      <td>DOB</td>
+      <td>
+      <input type="date" max="{{ dt1 }}"name="textfield4" id="textfield4" required  class="form-control" value="{{ dt.dob|date:"Y-m-d" }}" />
+    </tr>
+  <tr>
+      <td>qualification</td>
+      <td>
+      <input type="text" name="textfield5" id="textfield5" value="{{ dt.qulification }}"  pattern="[a-z A-Z]+" required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td><img src="{{ dt.image }}"height="100px" width="100px">
+      <input type="file" name="fileField" id="fileField"  class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

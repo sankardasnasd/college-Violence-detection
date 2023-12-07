@@ -1,0 +1,26 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/adminsendrply_post/#about">
+    {% csrf_token %}
+ <table class="table table-bordered">
+  <tr>
+      <input type="hidden" name="id" value="{{id}}">
+    <td>Reply</td>
+    <td>
+
+      <textarea name="textarea" id="textarea" class="form-control"  required cols="45" rows="5"></textarea>
+    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="button" id="button" value="send"  class="btn btn-success"/></p>
+    </td>
+  </tr>
+</table>
+    </form>
+</body>
+{% endblock %}
+

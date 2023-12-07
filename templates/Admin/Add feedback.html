@@ -1,0 +1,20 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/adminaddfeedback_post/#about">
+    {% csrf_token %}
+     <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <td>Feedback</td>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield"  required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

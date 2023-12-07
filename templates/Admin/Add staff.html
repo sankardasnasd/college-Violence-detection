@@ -1,0 +1,66 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+
+<body>
+<form action="/myapp/adminaddstaff_post/#about" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered ">
+    <tr>
+      <td width="180px">Name</td>
+      <td>
+      <input type="text" name="textfield" id="textfield" pattern="[a-z A-Z]+"  required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Phone number</td>
+      <td>
+      <input type="text" name="textfield2" id="textfield2"required pattern="[9876][0-9]{9}" max="10" class="form-control" /></td>
+    </tr> <tr>
+      <td>Qualification</td>
+      <td>
+      <input type="text" name="textfield5" pattern="[a-z A-Z]+"  id="textfield5" required class="form-control" /></td>
+    </tr>
+     <tr>
+      <td>Department</td>
+      <td>
+        <select name="select" id="select" required class="form-control">
+            {% for i in data %}
+            <option value="{{ i.id }}">{{ i.department }}</option>
+            {% endfor  %}
+      </select></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td>
+          <select name="RadioGroup1" class="form-control" required>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+
+          </select>
+
+</td>
+    </tr>
+    <tr>
+      <td>E-mail</td>
+      <td>
+      <input type="email" name="textfield3" id="textfield3"  pattern="[a-z/A-Z/0-9]{3,}[@][a-z/A-Z]{2,}[.][a-z/A-Z]
+      {2}"class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>DOB</td>
+      <td>
+      <input type="date" max="{{ dt }}"name="textfield4" id="textfield4"  required class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Photo</td>
+      <td>
+      <input  type="file" name="fileField" id="fileField" required  class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

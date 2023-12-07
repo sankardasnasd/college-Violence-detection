@@ -1,0 +1,25 @@
+  {% extends 'authority/authindex.html' %}
+{% block body %}
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/login_post/">
+    {% csrf_token %}
+  <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <td>Username</td>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>password
+        <label for="textfield2"></label></td>
+      <td><label for="textfield2"></label>
+      <input type="text" name="textfield2" id="textfield2" class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" class="btn btn-success"9 name="button" id="button" value="Login" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/adminviewcomplient_post/#about">
+{% csrf_token %}
+   <table class="pull-left">
+    <tr>
+      <td>from date</td>
+      <td>
+      <input type="date" name="textfield" class="form-control" id="textfield" required class="form-control" /></td>
+      <td>to date</td>
+      <td>
+      <input type="date" name="textfield2" id="textfield2" required class="form-control" /></td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+
+<br>
+<br>
+    <table class="table table-bordered table-hover table-striped">
+  <tr>
+    <th>Sno</th>
+
+    <th>Date</th>
+        <th>Parent</th>
+       <th>Complaint</th>
+    <th>Status</th>
+
+    <td>
+      <label for="textfield3"></label></td>
+  </tr>
+    {% for i in data %}
+  <tr>
+      <td width="50px">{{forloop.counter}}</td>
+
+      <td>{{i.date}}</td>
+    <td>{{ i.PARENT.username }}</td>
+   <td>{{i.complaint}}</td>
+      <td>{{i.status}}</td>
+
+        {% if i.status == 'pending' %}
+    <td><a href="/myapp/adminSendrply/{{ i.id }}" class="btn btn-warning">Reply</a></td>
+  {% else %}
+  <td>{{i.reply}}</td>
+  {% endif %}
+  </tr>
+    {% endfor %}
+
+</table>
+
+</form>
+</body>
+{% endblock %}

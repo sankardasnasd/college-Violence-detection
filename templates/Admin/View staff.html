@@ -1,0 +1,56 @@
+
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/adminviewstaff_post/#about">
+    {% csrf_token %}
+   <table class=pull-left ">
+    <tr>
+      <td>
+      <input type="text"PLACEHOLDER="Search by name" name="textfield" id="textfield"  required class="form-control" /></td>
+      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>
+
+    </tr>
+  </table>
+<br>
+<br>
+   <table class="table table-bordered table-hover table-striped">
+    <tr class="text-dark">
+      <th>Sl/No</th>
+         <th>Name</th>
+        <th>Gender</th>
+         <th>DOB</th>
+
+             <th>Department</th>
+      <th>Phone Number</th>
+
+
+      <th>E-mail</th>
+
+      <th>Qualification</th>
+      <th>Photo</th>
+        <th></th>
+        <th></th>
+    </tr>
+      {% for i in data %}
+    <tr>
+      <td>&nbsp;{{forloop.counter }}</td>
+      <td>{{ i.name }}</td>
+          <td>&nbsp;{{i.gender}}</td>
+         <td>&nbsp;{{ i.dob }}</td>
+
+      <td>&nbsp;{{ i.DEPARTMENT.department }}</td>
+      <td>{{ i.phone_number }}&nbsp;</td>
+        <td>{{ i.e_mail }}</td>
+
+                <td>{{ i.qulification }}</td>
+        <td><img src="{{ i.image }}" height="100px" width="100px"></td>
+      <td><a href="/myapp/admineditstaff/{{ i.id }}" class="btn btn-success">Edit</a></td>
+      <td><a href="/myapp/admindeletestaff/{{ i.id }}"class="btn btn-danger">Delete</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}

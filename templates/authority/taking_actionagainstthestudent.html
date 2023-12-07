@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<form action="/myapp/post_authoritytakeaction/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <td>Action</td>
+      <td><label for="textfield"></label>
+      <input type="text" name="textfield" id="textfield" class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Date</td>
+      <td><label for="textfield2"></label>
+      <input type="date" name="textfield2" id="textfield2" class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td><select name="textfield3" class="form-control">
+          {% for i in data %}
+          <option value="{{ i.id }}">
+              {{ i.name }}</option>
+          {% endfor %}</select></td>
+    </tr>
+    <tr>
+      <td>Alert</td>
+        <td><select name="textfield4" class="form-control">
+            {% for i in data1  %}
+            <option value="{{ i.id }}">
+                {{ i.alert }}</option>
+            {%  endfor %}</select></td>
+
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Submit" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/adminviewcourse_POST/#about">
+    {% csrf_token %}
+ <table class="pull-left">
+  <tr>
+      <td>
+          <input type="text" placeholder="search by course" name="textfield" id="textfield" required class="form-control"/></td>
+      <td><input type="submit"  class="btn btn-success"value="search"/></td>
+  </tr>
+ </table>
+<br>
+<br>
+
+    <table class="table table-bordered table-hover table-striped">
+<tr>
+    <th>SNo</th>
+    <th>Couse name</th>
+    <th>Department name</th>
+    <th>No.of semester</th>
+    <th></th>
+    <th>&nbsp;</th>
+  </tr>
+
+    {% for i in data %}
+  <tr>
+    <td width="50px">&nbsp;{{ forloop.counter }}</td>
+    <td>{{ i.course }}</td>
+    <td>&nbsp;{{ i.DEPARTMENT.department }}</td>
+    <td>{{ i.no_of_semester }}</td>
+    <td width="50px"><a href="/myapp/admineditcourse/{{ i.id }}" class="btn btn-success">Edit</a></td>
+    <td width="50px"><a href="/myapp/admindeletecourse/{{ i.id }}"class="btn btn-danger">Delete</a></td>
+  </tr>
+    {% endfor %}
+</table>
+</form>
+
+</body>
+{% endblock %}

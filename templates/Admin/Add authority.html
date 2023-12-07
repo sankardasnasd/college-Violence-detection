@@ -1,0 +1,56 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form action="/myapp/adminaddauthority_post/#about" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    {% csrf_token %}
+  <table class="table table-bordered">
+    <tr>
+      <td>Name</td>
+      <td>
+      <input type="text" name="textfield" id="textfield" pattern="[a-z A-Z]+" required class="form-control"/></td>
+    </tr>
+       <tr>
+      <td>DOB</td>
+      <td>
+      <input type="date" max="{{ dt }}" name="textfield3" id="textfield3" required class="form-control"/></td>
+    </tr>
+       <tr>
+      <td>Gender</td>
+      <td>
+          <select name="RadioGroup1" required class="form-control">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+          </select>
+
+       </td>
+    </tr>
+{#       <tr>#}
+{#      <td>Qulification</td>#}
+{#      <td><label for="textfield5"></label>#}
+{#      <input type="text" name="textfield5" pattern="[a-z A-Z]+" id="textfield5"  required class="form-control"/></td>#}
+{#    </tr>#}
+          <tr>
+
+      <td>E-mail</td>
+      <td>
+      <input type="text" name="textfield4" id="textfield4" pattern="[a-zA-Z 0-9]+[@][a-zA-Z]+[.][a-zA-Z]+"class="form-control"/></td>
+    </tr>
+    <tr>
+      <td>Phone Number</td>
+      <td>
+      <input type="text" name="textfield2" id="textfield2" required pattern="[9876][0-9]{9}" max="10" class="form-control" /></td>
+    </tr>
+    <tr>
+      <td width="180px">Photo</td>
+      <td>
+      <input type="file" name="fileField" id="fileField" required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success"/></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,34 @@
+
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/admineditcourse_POST/#about">
+{% csrf_token %}
+   <table class="table table-bordered table-hover table-striped">
+    <tr>
+        <input type="hidden" name="id" value="{{ dt.id }}"/>
+      <td>Department</td>
+      <td>
+        <select name="select" id="select" required class="form-control">
+          {% for i in dt1 %}
+          <option value="{{ i.id }}"{% if date.DEPARTMENT_id == i.id %}selected{% endif %}>{{ i.department }}</option>
+          {% endfor %}
+      </select></td>
+    </tr>
+    <tr>
+      <td>Course</td>
+      <td><input type="text" name="cource" required pattern="[a-z A-Z]+" class="form-control" value="{{ dt.course }}"/></td>
+    </tr>
+    <tr>
+      <td>No of semester</td>
+      <td><input type="text" name="nos" required  pattern="[0-9]+" class="form-control" value="{{ dt.no_of_semester }}"/></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

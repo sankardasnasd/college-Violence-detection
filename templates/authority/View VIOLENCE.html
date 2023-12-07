@@ -1,0 +1,44 @@
+{% extends 'authority/authindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/authorityViewViolence_post/#abc">
+    {% csrf_token %}
+   <table class="pull-left">
+    <tr>
+      <td>From date</td>
+      <td>
+      <input type="date" name="textfield" class="form-control" id="textfield" required class="form-control" /></td>
+      <td>to date</td>
+      <td>
+      <input type="date" name="textfield2" id="textfield2" required class="form-control" /></td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+<br>
+<br>
+   <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <th>Sl/No</th>
+      <th>date</th>
+      <th>&nbsp;time</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+      {% for i in data %}
+    <tr>
+        <td width="50px">{{ forloop.counter }}</td>
+        <td>{{ i.date }}</td>
+        <td>{{ i.time}}</td>
+
+{#      <td width="50px"><a href="/myapp/authorityViewIncludedFace/{{ i.id }}#abc" class=" btn btn-success">Faces</a></td>#}
+      <td width="50px"><a href="/myapp/auth_violence_subimages/{{ i.id }}#abc" class=" btn btn-success">Images</a></td>
+{#      <td><a href="/myapp/authoritytest/{{ i.id }}#abc" class=" btn btn-success">Students</a></td>#}
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+</body>
+{% endblock %}
+

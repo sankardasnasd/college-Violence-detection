@@ -1,0 +1,39 @@
+{% extends 'authority/authindex.html' %}
+{% block body %}
+
+
+<body>
+<div class="container " style="">
+    <form id="form1" name="form1" method="post" action="">
+    {% csrf_token %}
+
+  <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <th>Sl/No</th>
+      <th>Parent Information</th>
+      <th>Student Name</th>
+      <th>Address</th>
+      <th>Details</th>
+      <th>Contact</th>
+      <th>&nbsp;</th>
+
+    </tr>
+     {% for i in data %}
+      <tr>
+      <td> {{ forloop.counter }}</td>
+           <td>{{ i.parent_name }}<br>{{ i.parent_number }}<br>{{ i.parent_e_mail_id }}</td>
+      <td><img src="{{ i.image }}" height="100px" width="100px"><br>{{ i.name }}</td>
+          <td>{{ i.place }},{{ i.city }},{{ i.district }},{{ i.state }},{{ i.pincode }}</td>
+      <td>{{ i.dob }}<br>{{ i.gender }}<br>{{i.course}}&nbsp;</td>
+      <td>{{ i.phone_number }}<br>{{ i.e_mail }}</td>
+
+      <td><a href="/myapp/chat/{{ i.lid.id }}" class="btn btn-warning">Chat</a></td>
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+
+</div>
+
+</body>
+{% endblock %}

@@ -1,0 +1,38 @@
+  {% extends 'authority/authindex.html' %}
+{% block body %}
+<body>
+<form>
+    <table class="table table-bordered">
+         <tr>
+
+            <td colspan="2"><img src="{{ data.image }}"height="100px" width="100px"> </td>
+        </tr>
+
+       <tr>
+            <td width="150px">Name</td>
+            <td>{{ data.name }}</td>
+        </tr>
+
+         <tr>
+            <td>Age</td>
+            <td>{{ data.age }}</td>
+        </tr>
+         <tr>
+            <td>Gender</td>
+            <td>{{ data.gendre }}</td>
+        </tr>
+         <tr>
+            <td>Phone number</td>
+            <td>{{ data.phone_number}}</td>
+        </tr>
+         <tr>
+            <td>Email</td>
+            <td>{{ data.e_mail }}</td>
+        </tr>
+
+
+
+    </table>
+</form>
+</body>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'authority/authindex.html' %}
+{% block body %}
+
+
+<body>
+<div class="container " style="">
+    <form id="form1" name="form1" method="post" action="/myapp/authorityviewstudent_post/#abc">
+    {% csrf_token %}
+ <div>
+      <table class="pull-left">
+    <tr>
+      <td>
+      <input type="text" placeholder="Search by name" name="textfield" id="textfield" class="form-control" /></td>
+      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>
+    </tr>
+  </table>
+ <br>
+ <br>
+  <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <th>Sl/No</th>
+      <th>Name</th>
+      <th>DOB</th>
+      <th>Gender</th>
+      <th>Contacts</th>
+      <th>Course</th>
+      <th>Address</th>
+      <th>Parent Info</th>
+
+    </tr>
+     {% for i in data %}
+      <tr>
+      <td> {{ forloop.counter }}</td>
+      <td>{{ i.name }}<br><img src="{{ i.image }}" height="100px" width="100px"></td>
+      <td>{{ i.dob }}</td>
+      <td>{{ i.gender }}</td>
+      <td>{{ i.phone_number }}<br>{{ i.e_mail }}</td>
+      <td>{{i.COURSE.course}}&nbsp;</td>
+      <td>{{ i.place }}{{ i.city }}<br>{{ i.district }}<br>{{ i.state }}<br>{{ i.pincode }}</td>
+      <td>{{ i.parent_name }}<br>{{ i.parent_number }}<br>{{ i.parent_e_mail_id}}</td>
+{#      <td><a href="/myapp/admindeletestudent/{{ i.id }}">Delete</a></td>#}
+    </tr>
+      {% endfor %}
+  </table>
+ </div>
+</form>
+
+</div>
+
+</body>
+{% endblock %}

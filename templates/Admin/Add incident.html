@@ -1,0 +1,25 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+<body>
+<form id="form1" name="form1" method="post" action="/myapp/adminaddincident_post/#about">
+    {% csrf_token %}
+  <table class="table table-bordered ">
+    <tr>
+      <td width="150px">Incident</td>
+      <td>
+      <input type="text" pattern="[a-z A-Z]+[0-9a-zA-Z ]+"  name="textfield" id="textfield" required class="form-control" /></td>
+    </tr>
+    <tr>
+      <td>Description</td>
+      <td>
+          <textarea  name="textfield2" id="textfield2" required class="form-control"></textarea></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td><input type="submit" name="button" id="button" value="Submit" class="btn btn-success" /></td>
+    </tr>
+  </table>
+</form>
+</body>
+{% endblock %}

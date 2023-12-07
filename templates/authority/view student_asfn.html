@@ -1,0 +1,84 @@
+{% extends 'Admin/aindex.html' %}
+{% block body %}
+
+
+<div style="overflow: scroll">
+<form id="form1" name="form1" method="post" action="/myapp/auth_assign_violence_to_studentpost/#about">
+    {% csrf_token %}
+   <table class="pull-left">
+    <tr>
+      <td>
+      <input type="text" PLACEHOLDER="Search by name" name="textfield" id="textfield" class="form-control" /></td>
+      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>
+
+         <td style="width: 25px"></td>
+         <td >Course</td>
+      <td><label for="select"></label>
+        <select name="select" id="select"  class="form-control">
+            <option value="">---Select----</option>
+            {% for i in c %}
+            <option value="{{ i.id }}">{{ i.course }}</option>
+            {% endfor  %}
+      </select></td>
+     <td>Semester</td>
+      <td><label for="semseter"></label>
+        <select name="semseter" id="select"  class="form-control">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+
+      </select></td>
+      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Go" /></td>
+
+
+    </tr>
+  </table>
+<br>
+<br>
+<br>
+   <table class="table table-bordered table-hover table-striped">
+    <tr>
+      <th>Sl/No</th>
+      <th>Name</th>
+      <th>Course</th>
+
+      <th>ContactInfo</th>
+
+      <th>DOB</th>
+      <th>Address</th>
+
+        <th>Gender</td>
+      <th>Parent</th>
+
+
+      <td>&nbsp;</td>
+
+    </tr>
+     {% for i in s %}
+      <tr>
+      <td> {{ forloop.counter }}</td>
+      <td>{{ i.name }}
+      <br>
+      <img src="{{ i.image }}" height="100px" width="100px"></td>
+      <td>{{i.COURSE.course}}&nbsp;<br>
+      {{ i.semester }}</td>
+      <td>{{ i.phone_number }} <br> {{ i.e_mail }}</td>
+      <td>{{ i.dob }}</td>
+      <td>{{ i.place }}<br>{{ i.city }}<br>{{ i.district }}<br>{{ i.state }}<br>{{ i.pincode }}</td>
+
+          <td>{{ i.gender }}</td>
+      <td>{{ i.parent_name }} <br>
+     {{ i.parent_number }}</td>
+
+      <td width="50px"><a href="/myapp/assgn/{{ i.id }}"class="btn btn-success">Map</a></td>
+
+    </tr>
+      {% endfor %}
+  </table>
+</form>
+
+</div>
+{% endblock %}

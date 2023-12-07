@@ -1,0 +1,84 @@
+{% extends 'Authority/authindex.html' %}
+{% block body %}
+
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ <script>
+        $(document).ready(function () {
+            $('#textfield').change(function () {
+                var name = $(this).val();
+                var vid = $("#vid").val();
+                if (name) {
+                    $.ajax({
+                        url: '/myapp/searchStudent/',
+                        data: { 'name': name },
+                        dataType: 'json',
+                        success: function (data) {
+{#                            var courseSelect = $('#course');#}
+                            var nm = $('#nm');
+{#                            var ph = $('#ph');#}
+                            var idb = $('#idb');
+{#                            courseSelect.empty();#}
+{#                            nm.append('<option value="">Select a Course</option>');#}
+                            $.each(data, function (key, value) {
+{#                                                            alert(value.name);#}
+
+{#                                idb.append('<a class="btn btn-danger" href="/myapp/addStudentTOIncludedFace_post/'+vid+'/'+value.id+'">Add</a>');#}
+                                nm.append('<tr>' +
+                                    '<td>'+value.name+'</td>' +
+                                    '<td><img src="'+value.image+'" height="100px" width="100px"></td>' +
+                                    '<td><a class="btn btn-danger" href="/myapp/addStudentTOIncludedFace_post/'+vid+'/'+value.id+'">Add</a></td>' +
+                                    '</tr>');
+{#                                ph.append('<img src="'+value.image+'" height="100px" width="100px">');#}
+                            });
+                        }
+                    });
+                } else {
+                }
+            });
+
+
+        });
+</script>
+<br>
+<br>
+{#<h3>Included Students</h3>#}
+{#<br>#}
+{#<form id="form1" name="form1" method="post" action="/myapp/authorityViewIncludedFace_post/#abc">#}
+{#    {% csrf_token %}#}
+{#  <input type="hidden" name="id" value="{{ id }}"/>#}
+{#   <table class="table table-bordered" style="width: 500px">#}
+{#    <tr>#}
+{#      <td>#}
+{#      <input type="text" name="textfield" id="textfield" required class="form-control" /></td>#}
+{#      <td><input type="submit" class="btn btn-success" name="button" id="button" value="Search" /></td>#}
+{#    </tr>#}
+{#  </table>#}
+
+<div class="container">
+        <div class="row">
+                  {% for i in data %}
+            <div class="col-md-3">
+                <div class="card">
+                    <img src="{{ i.STUDENT.image }}" class="card-img-top" height="300px" alt="Card Image">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i.STUDENT.name }}</h5>
+                        <p class="card-text "><a href="/myapp/delface/{{ i.id }}" onclick="return confirm('Are you sure')" class="btn btn-danger">Delete</a> </p>
+                    </div>
+                </div>
+            </div>
+                  {% endfor %}
+
+        </div>
+    </div>
+
+
+
+
+
+
+</form>
+</body>
+{% endblock %}
+
